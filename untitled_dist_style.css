@@ -1,0 +1,153 @@
+:root {
+  --flame-color: #ff9d00;
+  --wax-color: #f7e9d7;
+}
+
+body {
+  margin: 0;
+  background: #0a0a0a;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+/* The ambient light on the wall */
+.candle-container {
+  position: relative;
+  width: 100px;
+  height: 300px;
+}
+
+.candle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 160px;
+  background: linear-gradient(
+    to right,
+    #d4bc9a,
+    #f7e9d7 40%,
+    #e2c9a3 60%,
+    #b38b5d
+  );
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wax-melt {
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  height: 15px;
+  background: var(--wax-color);
+  border-radius: 50%;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.wick {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 15px;
+  background: linear-gradient(to bottom, #000, #333);
+  border-radius: 2px;
+}
+
+/* Realistic Flame Stack */
+.flame-wrapper {
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25px;
+  height: 55px;
+  filter: blur(0.5px);
+  animation: flicker 120ms infinite alternate ease-in-out;
+}
+
+.flame-outer {
+  width: 100%;
+  height: 100%;
+  background: var(--flame-color);
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 40px 10px rgba(255, 120, 0, 0.4);
+  opacity: 0.8;
+}
+
+.flame-inner {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.9;
+  filter: blur(2px);
+}
+
+.flame-blue {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 10px;
+  background: #3498db;
+  border-radius: 50%;
+  opacity: 0.5;
+  filter: blur(3px);
+}
+
+/* When extinguished */
+.extinguished {
+  display: none !important;
+}
+
+@keyframes flicker {
+  0% {
+    transform: translateX(-50%) scale(1) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(-50%) scale(1.05) rotate(1deg);
+  }
+}
+
+.ui {
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
+  color: #555;
+}
+
+#startBtn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #999;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.hidden-message {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out; /* Makes it fade in smoothly */
+  text-align: center;
+  color: #f1c40f;
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+  margin-top: 20px;
+}
+
+/* This class will be added by JavaScript later */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
