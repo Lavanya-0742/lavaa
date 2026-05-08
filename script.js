@@ -31,7 +31,7 @@ btn.addEventListener("click", async () => {
       let average = sum / dataArray.length;
 
       // 4. Check the volume level
-      if (average > 0.3000) {
+      if (average > 10) {
         // Put out flame
         flame.classList.add("extinguished");
 
